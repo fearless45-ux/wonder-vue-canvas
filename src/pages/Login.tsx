@@ -10,7 +10,10 @@ const Login = () => {
   const [showPw, setShowPw] = useState(false);
 
   return (
-    <div className="min-h-screen bg-hero flex items-center justify-center px-4">
+    <div className="min-h-screen bg-hero flex items-center justify-center px-4 relative">
+      <Link to="/" className="absolute top-6 left-6 flex items-center gap-2 text-sm text-primary-foreground/60 hover:text-primary-foreground transition-colors">
+        <ArrowLeft size={16} /> Back to Home
+      </Link>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
