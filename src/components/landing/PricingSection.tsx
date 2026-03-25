@@ -43,7 +43,9 @@ const PricingSection = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <span className="text-sm font-medium text-accent uppercase tracking-wider">Pricing</span>
+          <span className="text-sm font-medium text-accent uppercase tracking-wider">
+            Pricing
+          </span>
           <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground mt-3">
             Simple, transparent pricing
           </h2>
@@ -71,28 +73,50 @@ const PricingSection = () => {
                   {plan.badge}
                 </span>
               )}
+
               <h3 className="font-display text-lg font-semibold">{plan.name}</h3>
+
               <div className="mt-4 mb-6">
-                <span className="font-display text-4xl font-bold">{plan.price}</span>
-                <span className={`text-sm ${plan.featured ? "text-primary-foreground/60" : "text-muted-foreground"}`}>
+                <span className="font-display text-4xl font-bold">
+                  {plan.price}
+                </span>
+                <span
+                  className={`text-sm ${
+                    plan.featured
+                      ? "text-primary-foreground/60"
+                      : "text-muted-foreground"
+                  }`}
+                >
                   {plan.period}
                 </span>
               </div>
+
               <ul className="space-y-3 mb-8">
                 {plan.features.map((f) => (
                   <li key={f} className="flex items-center gap-3 text-sm">
-                    <Check className={`w-4 h-4 flex-shrink-0 ${plan.featured ? "text-secondary" : "text-secondary"}`} />
-                    <span className={plan.featured ? "text-primary-foreground/80" : "text-muted-foreground"}>
+                    <Check className="w-4 h-4 text-secondary" />
+                    <span
+                      className={
+                        plan.featured
+                          ? "text-primary-foreground/80"
+                          : "text-muted-foreground"
+                      }
+                    >
                       {f}
                     </span>
                   </li>
                 ))}
               </ul>
-              <Link to="/signup">
+
+              {/* 🔥 MODIFIED BUTTON */}
+              <Link to="/dashboard">
                 <Button
                   variant={plan.featured ? "hero" : "default"}
                   size="lg"
                   className="w-full"
+                  onClick={() => {
+                    localStorage.setItem("subscribed", "true");
+                  }}
                 >
                   Subscribe Now
                 </Button>
